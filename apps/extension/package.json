@@ -1,0 +1,24 @@
+{
+  "name": "@openmarks/extension",
+  "version": "1.0.0",
+  "private": true,
+  "license": "GPL-3.0-or-later",
+  "type": "module",
+  "scripts": {
+    "build": "wxt build",
+    "typecheck": "svelte-check",
+    "postinstall": "wxt prepare",
+    "zip": "wxt zip"
+  },
+  "dependencies": {
+    "@openmarks/core": "workspace:*",
+    "@openmarks/module-dial": "workspace:*",
+    "@openmarks/module-sdk": "workspace:*"
+  },
+  "devDependencies": {
+    "@wxt-dev/module-svelte": "2.0.5",
+    "svelte": "5.57.2",
+    "svelte-check": "^4.7.7",
+    "wxt": "0.21.4"
+  }
+}
