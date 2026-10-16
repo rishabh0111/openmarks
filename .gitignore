@@ -1,0 +1,11 @@
+node_modules/
+.output/
+.wxt/
+dist/
+.turbo/
+test-results/
+
+# Local secrets, never committed
+.env
+.env.*
+feed/public/
