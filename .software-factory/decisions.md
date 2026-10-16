@@ -1,0 +1,5 @@
+- 2026-10-16 · setup · tracker · local now; github openmarks/openmarks once the org exists (owner)
+- 2026-10-16 · setup · scanners · gitleaks 8.30.1 + osv-scanner 2.7.0, pinned, checksum-verified (owner)
+- 2026-10-16 · setup · agent_guard · declined (owner)
+- 2026-10-16 · setup · policy · from agent-factory tiers: implement auto, everything else manual
+- 2026-10-16 · setup · browser_mcp · pending: chrome-devtools test call failed, Chrome not running

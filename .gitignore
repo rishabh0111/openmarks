@@ -4,6 +4,7 @@ node_modules/
 dist/
 .turbo/
 test-results/
+.software-factory/runs/
 
 # Local secrets, never committed
 .env

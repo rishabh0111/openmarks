@@ -1,0 +1,98 @@
+# Written by the sf-setup skill. Every software-factory skill reads this file.
+# Edit it directly, or re-run sf-setup to change an answer.
+
+version: 2
+
+tracker:
+  kind: local             # moves to github (openmarks/openmarks) once the org exists
+  host: ""
+  project: ""
+  cli: none
+  signed_in: n/a
+  local_dir: .software-factory/issues
+  notes: ""
+  labels: {}
+
+code:
+  default_branch: main
+  branch_protected: pending
+  longpaths: n/a
+  ci: pending             # Bet A criterion 9 adds GitHub Actions CI
+  ci_files: []
+  dependency_bot: pending # Renovate GitHub app once on GitHub
+
+commands:                 # the repo is empty; Bet A's first ticket scaffolds these, then re-run sf-setup
+  install: unknown
+  build: unknown
+  test: unknown
+  lint: unknown
+  typecheck: unknown
+  run: unknown
+  deploy: none            # an extension; store releases go through a gated release workflow (Bet A criterion 10)
+  eval: none              # no prompts or models in the product
+
+baseline:
+  commit: unknown
+  install: unknown
+  build: unknown
+  lint: unknown
+  typecheck: unknown
+  test: unknown
+
+deploy:
+  trigger: none
+  platform: none
+  workflows: []
+  status: none
+  health_url: none
+  validated: unknown
+
+app:
+  local_url: unknown
+  production_url: none
+  staging_url: none
+  errors_command: none    # no telemetry by design
+
+tools:
+  docker: ready
+  browser_mcp: pending
+  browser_status: "failed: Could not find DevToolsActivePort (Chrome not running with remote debugging)"
+  second_opinion: none
+  pre_commit: none
+  agent_guard: none       # declined by owner 2026-10-16
+  browser_isolated: false # configured with --autoConnect to the user's Chrome profile
+  scanners: [gitleaks, osv-scanner]
+
+holdouts:
+  dir: ~/.software-factory/holdouts/openmarks
+
+policy:                   # from agent-factory company.yaml tiers (validate.mjs --sf-policy)
+  implement: auto
+  open_pr: manual
+  merge: manual
+  deploy: manual
+  comment: manual
+  close: manual
+
+limits:
+  max_fix_rounds: 5
+  max_pr_lines: 400
+  evidence_max_age_h: 24
+  merge_soak_minutes: 0
+
+quality:
+  mutation_threshold: default
+  perf_threshold_pct: default
+  changed_line_coverage: default
+
+pending:
+  - item: tracker
+    finish: owner creates github.com/openmarks, then create repo openmarks/openmarks, push, and re-run sf-setup to switch tracker to github
+  - item: commands + baseline
+    finish: after Bet A's scaffold ticket merges, re-run sf-setup to record pnpm commands and take the baseline
+  - item: code.branch_protected
+    finish: after the push, re-run sf-setup and answer question G
+  - item: code.dependency_bot
+    finish: install the Renovate GitHub app on the openmarks org
+  - item: tools.browser_mcp
+    finish: start Chrome with remote debugging (or switch to Playwright MCP with --isolated), call list_pages once, re-run sf-setup
