@@ -1,0 +1,19 @@
+{
+  "name": "@openmarks/core",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "exports": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "test": "vitest run --root ../..",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@openmarks/module-sdk": "workspace:*"
+  },
+  "devDependencies": {
+    "vitest": "5.0.5"
+  }
+}
