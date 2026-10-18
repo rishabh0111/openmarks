@@ -19,6 +19,8 @@ No account, no ads, no tracking.
 - A daily wallpaper from Bing, Wikimedia or Unsplash, or your own picture or colour
 - Search, plus paste a link anywhere to add a tile
 - Keyboard shortcuts (arrow keys or Vim keys) and game controller support
+- Fits every screen, from phones and tablets to ultrawide monitors, with pictures kept sharp on HiDPI displays
+- Fast and minimal: about 70 KB, opens instantly from a local cache, no ads, no tracking, no account
 
 ## Build and development
 
