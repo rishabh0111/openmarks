@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <title>Concept 1: Saved Tile</title>
+  <!-- A 3x3 dial of site tiles; the top of the right column is a bookmark ribbon. Grid snaps to 8 units = 1 px at 16 px. -->
+  <g fill="#4263EB">
+    <rect x="0" y="0" width="32" height="32" rx="8"/>
+    <rect x="48" y="0" width="32" height="32" rx="8"/>
+    <rect x="0" y="48" width="32" height="32" rx="8"/>
+    <rect x="48" y="48" width="32" height="32" rx="8"/>
+    <rect x="0" y="96" width="32" height="32" rx="8"/>
+    <rect x="48" y="96" width="32" height="32" rx="8"/>
+    <rect x="96" y="96" width="32" height="32" rx="8"/>
+  </g>
+  <path d="M104 0h16a8 8 0 0 1 8 8v72l-16-14-16 14V8a8 8 0 0 1 8-8z" fill="#F59F00"/>
+</svg>

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Openmarks: a free, open-source speed dial for your new tab</title>
+<meta name="description" content="Openmarks turns your new tab into a speed dial built from your own bookmarks. Free and open source for Firefox and Chrome. No account, no ads, no tracking.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<meta property="og:title" content="Openmarks: a free, open-source speed dial for your new tab">
+<meta property="og:description" content="Your bookmarks, front and center. Free and open source for Firefox and Chrome.">
+<meta property="og:image" content="https://rishabh0111.github.io/openmarks/shots/home.png">
+<script>
+  // Store links. Change a URL here, and set live: true once that listing is published
+  // (that removes the "Coming soon" label). The same URLs are in the buttons below as a no-script fallback.
+  const STORES = {
+    firefox: { url: 'https://addons.mozilla.org/firefox/addon/openmarks/', live: false },
+    chrome: { url: 'https://chromewebstore.google.com/', live: false },
+  };
+  const REPO = 'https://github.com/rishabh0111/openmarks';
+</script>
+</head>
+<body>
+<header class="top wrap">
+  <a class="brand" href="./"><img src="logo.svg" alt="" width="28" height="28">Openmarks</a>
+  <a class="gh" data-repo href="https://github.com/rishabh0111/openmarks">GitHub</a>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <h1>Your bookmarks, front and center.</h1>
+    <p class="lede">Openmarks is a free, open-source new tab page for Firefox and Chrome. It shows the sites you use as tiles, built from a bookmarks folder you already have, and it never asks for an account.</p>
+    <div class="ctas">
+      <a class="btn primary" data-store="firefox" href="https://addons.mozilla.org/firefox/addon/openmarks/">Add to Firefox<span class="soon">Coming soon</span></a>
+      <a class="btn primary" data-store="chrome" href="https://chromewebstore.google.com/">Add to Chrome<span class="soon">Coming soon</span></a>
+    </div>
+    <figure class="shot hero-shot">
+      <img src="shots/home.png" width="1440" height="900" fetchpriority="high"
+        alt="Openmarks new tab page showing a grid of website tiles with folder tabs across the top, a search button and a clock.">
+    </figure>
+  </section>
+
+  <section class="features wrap">
+    <div class="feature">
+      <div class="text">
+        <h2>Built on your bookmarks</h2>
+        <p>Your tiles live in an ordinary bookmarks folder, so they sync wherever your browser's bookmark sync already reaches. Folders inside it show up as tabs across the top.</p>
+        <h2>Add a site in a second</h2>
+        <p>Paste a link anywhere on the page and it becomes a tile. Or right-click on any page and choose "Add to Speed Dial".</p>
+      </div>
+      <figure class="shot"><img src="shots/settings.png" width="1440" height="900" loading="lazy"
+        alt="The Openmarks settings sheet open from the bottom-right corner, with options for theme, wallpaper, tile pictures and the bookmarks folder."></figure>
+    </div>
+
+    <div class="feature flip">
+      <div class="text">
+        <h2>Arrange it your way</h2>
+        <p>Edit a tile's name or link, drag tiles into the order you like, and delete without worry: every delete can be undone.</p>
+      </div>
+      <figure class="shot"><img src="shots/edit.png" width="1440" height="900" loading="lazy"
+        alt="The edit dialog for a tile, with fields for its name and link and a choice of cover image, logo or screenshot for its picture."></figure>
+    </div>
+
+    <div class="feature">
+      <div class="text">
+        <h2>Find anything with one key</h2>
+        <p>Press <kbd>/</kbd> to search your tiles, or keep typing to search the web with your browser's own search engine.</p>
+      </div>
+      <figure class="shot"><img src="shots/search.png" width="1440" height="900" loading="lazy"
+        alt="The search box open after pressing the slash key, filtering tiles as you type with an option to search the web."></figure>
+    </div>
+
+    <div class="themes">
+      <div class="text">
+        <h2>Make it look like yours</h2>
+        <p>Pick a theme: Openmarks (light or dark, with an accent colour taken from your wallpaper), Vapor, Cyberpunk or Retro. Turn on transparency to let your wallpaper show through.</p>
+      </div>
+      <div class="trio">
+        <figure class="shot"><img src="shots/theme-vapor.png" width="1440" height="900" loading="lazy"
+          alt="Openmarks in the Vapor theme: navy background, blue-tinted tiles with square corners."><figcaption>Vapor</figcaption></figure>
+        <figure class="shot"><img src="shots/theme-cyberpunk.png" width="1440" height="900" loading="lazy"
+          alt="Openmarks in the Cyberpunk theme: near-black grid background, neon edges, cut corners and monospace titles."><figcaption>Cyberpunk</figcaption></figure>
+        <figure class="shot"><img src="shots/theme-retro.png" width="1440" height="900" loading="lazy"
+          alt="Openmarks in the Retro theme: bevelled grey tiles over a blue sky and green hill backdrop."><figcaption>Retro</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="feature flip">
+      <div class="text">
+        <h2>A new picture every day, if you like</h2>
+        <p>Set a plain colour, a gradient or your own photo as the wallpaper, or get a fresh daily picture from Bing, Wikimedia or Unsplash. Tiles can show a site's cover image, a sharpened logo or a screenshot.</p>
+      </div>
+      <figure class="shot"><img src="shots/wallpaper.png" width="1440" height="900" loading="lazy"
+        alt="Wallpaper settings offering a colour, a gradient, your own picture or a daily picture from Bing, Wikimedia or Unsplash."></figure>
+    </div>
+
+    <div class="feature solo">
+      <div class="text">
+        <h2>Hands on the keyboard (or a controller)</h2>
+        <p>Move between tiles with the arrow keys or Vim keys, open them with <kbd>Enter</kbd>, and press <kbd>?</kbd> to see every shortcut. It works with a game controller too.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="privacy wrap">
+    <h2>Private by design</h2>
+    <p>Openmarks has no account, no ads and no tracking. It doesn't collect anything about you or the sites you visit. The only requests it makes beyond your browser are the ones you turn on: a daily wallpaper, and pictures for the tiles you saved. The code is GPL-3.0 and open on GitHub, so you can check all of this yourself.</p>
+    <p><a href="privacy.html">Read the privacy policy</a></p>
+  </section>
+
+  <section class="closing wrap">
+    <h2>Make your new tab worth opening.</h2>
+    <p>Openmarks is free and always will be. Install it in a minute, point it at a bookmarks folder, and you're set.</p>
+    <div class="ctas">
+      <a class="btn primary" data-store="firefox" href="https://addons.mozilla.org/firefox/addon/openmarks/">Add to Firefox<span class="soon">Coming soon</span></a>
+      <a class="btn primary" data-store="chrome" href="https://chromewebstore.google.com/">Add to Chrome<span class="soon">Coming soon</span></a>
+      <a class="btn" data-repo href="https://github.com/rishabh0111/openmarks">View on GitHub</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>Openmarks · GPL-3.0</span>
+  <a href="privacy.html">Privacy</a>
+  <a data-repo href="https://github.com/rishabh0111/openmarks">Source code</a>
+</footer>
+
+<script>
+  for (const a of document.querySelectorAll('[data-store]')) {
+    const s = STORES[a.dataset.store];
+    a.href = s.url;
+    if (s.live) a.querySelector('.soon')?.remove();
+    else a.classList.add('is-soon');
+  }
+  for (const a of document.querySelectorAll('[data-repo]')) a.href = REPO;
+</script>
+</body>
+</html>
