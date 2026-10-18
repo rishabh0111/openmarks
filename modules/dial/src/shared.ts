@@ -7,7 +7,7 @@ export type Tab = { id: string; label: string; items: DialItem[] };
 
 /** Home = links directly in the Dial folder; each first-level folder = a Tab. */
 export function tabsFrom(dial: DialFolder): Tab[] {
-  const home: Tab = { id: 'home', label: 'Home', items: dial.items.filter((i) => i.kind === 'link') };
+  const home: Tab = { id: 'home', label: 'HOME', items: dial.items.filter((i) => i.kind === 'link') };
   const folders = dial.items.filter((i) => i.kind === 'folder') as Extract<DialItem, { kind: 'folder' }>[];
   return [home, ...folders.map((f) => ({ id: f.id, label: f.title, items: f.items }))];
 }
