@@ -193,7 +193,8 @@
   .seg { display: flex; padding: 3px; gap: 2px; border-radius: 10px; background: var(--surface-2); margin: 4px 0 12px; }
   .seg button { flex: 1; padding: 7px 4px; border: 0; border-radius: 8px; background: none; color: var(--muted); font: inherit; font-size: 13px; cursor: pointer; white-space: nowrap; }
   .seg button.on { background: var(--surface); color: var(--text); font-weight: 600; box-shadow: 0 1px 3px rgb(0 0 0 / 0.15); }
-  .seg button:hover { color: var(--text); }
+  .seg button { transition: background var(--quick) var(--ease), color var(--quick) var(--ease); }
+  .seg button:hover:not(.on) { color: var(--text); background: var(--tint); }
   .choice:empty { display: none; }
   .say { margin: 4px 0; font-size: 13px; color: var(--muted); line-height: 1.45; }
   .grid { display: grid; gap: 8px; }
@@ -223,6 +224,7 @@
   .actions { grid-column: 1 / -1; display: flex; gap: 8px; align-items: center; margin-top: 8px; }
   .grow { flex: 1; }
   .btn.danger { color: var(--danger); border-color: color-mix(in srgb, var(--danger) 40%, transparent); }
+  .btn.danger:hover { background: color-mix(in srgb, var(--danger) 12%, transparent); border-color: var(--danger); }
   .warn { margin: 10px 0 0; }
   @media (max-width: 640px) {
     .edit { grid-template-columns: 1fr; }

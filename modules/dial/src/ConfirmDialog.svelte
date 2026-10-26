@@ -16,4 +16,5 @@
 <style>
   .body { margin: 0; color: var(--text); font-size: 14px; line-height: 1.5; }
   .danger { background: #d93a3a !important; border-color: #d93a3a !important; }
+  .danger:hover { filter: brightness(1.08); }
 </style>

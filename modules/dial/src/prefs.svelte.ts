@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Settings: a small Vivaldi-like set, shown visually; everything else fixed.
+import { putNormal } from './private';
 
 export type TileSize = 'icon' | 'S' | 'M' | 'L' | 'XL';
 export type Provider = 'bing' | 'wikimedia' | 'picsum';
@@ -9,6 +10,8 @@ export type Wallpaper =
   | { kind: 'gradient'; colors: string[]; angle: number }
   | { kind: 'image' } // uploaded file, kept in IndexedDB
   | { kind: 'daily'; provider: Provider };
+/** A search engine you added: its search address and, optionally, a suggestions address (both with %s for the text). */
+export type CustomEngine = { id: string; name: string; url: string; suggest?: string };
 
 export type Prefs = {
   theme: 'auto' | 'light' | 'dark'; // light/dark mode
@@ -19,16 +22,20 @@ export type Prefs = {
   pictures: 'cover' | 'logo' | 'shot'; // what tiles show by default: the page's cover image, its logo, or a screenshot
   titles: 'show' | 'hover' | 'hide';
   maxColumns: number; // 0 = as many as fit (capped at 10)
-  search: boolean;
+  searchStyle: 'off' | 'icon' | 'bar'; // the search button in the corner, or a search bar in the top bar
+  engine: string; // a built-in engine id (search.ts) or one of `engines`
+  suggest: boolean; // search suggestions from the engine as you type
+  engines: CustomEngine[];
   addButton: boolean;
   clock: boolean;
+  focusPage: boolean; // new tabs put the focus in the dial, not the address bar (background.ts)
   wallpaper: Wallpaper;
   dialFolder: string | null; // null = the default "Openmarks" folder
 };
 
 const defaults: Prefs = {
-  theme: 'auto', themeId: 'openmarks', glass: true, vim: false, tileSize: 'M', pictures: 'cover', titles: 'show', maxColumns: 0, search: true, addButton: true, clock: false,
-  wallpaper: { kind: 'none' }, dialFolder: null,
+  theme: 'auto', themeId: 'openmarks', glass: true, vim: false, tileSize: 'M', pictures: 'cover', titles: 'show', maxColumns: 0, searchStyle: 'bar', engine: 'google', suggest: true, engines: [],
+  addButton: true, clock: false, focusPage: true, wallpaper: { kind: 'none' }, dialFolder: null,
 };
 
 /** Fixed (no setting): spacing, corners, title size. Target tile widths; actual width stretches to fill each row. */
@@ -37,12 +44,15 @@ export const fixed = { gap: 20, radius: 10, fontSize: 14, cap: 10, target: { ico
 const KEY = 'proto-prefs-v7';
 const saved = (() => {
   try {
-    return JSON.parse(localStorage.getItem(KEY) ?? '{}') as Partial<Prefs>;
+    return JSON.parse(localStorage.getItem(KEY) ?? '{}') as Partial<Prefs> & { search?: boolean };
   } catch {
     return {};
   }
 })();
 
+// The old search on/off switch becomes the search style (on = the bar, now the default).
+if (saved.searchStyle === undefined && saved.search !== undefined) saved.searchStyle = saved.search ? 'bar' : 'off';
+delete saved.search;
 export const prefs = $state<Prefs>({ ...defaults, ...saved });
 // NASA was removed as a daily source: anyone who had it gets Bing.
 if (prefs.wallpaper.kind === 'daily' && !['bing', 'wikimedia', 'picsum'].includes(prefs.wallpaper.provider)) prefs.wallpaper = { kind: 'daily', provider: 'bing' };
@@ -54,9 +64,10 @@ export const epoch = $state({ n: 0 });
 
 export function savePrefs() {
   localStorage.setItem(KEY, JSON.stringify(prefs));
-  // The right-click "Add to Speed Dial" (background) adds to the same folder the dial shows.
-  (globalThis as { chrome?: { storage?: { local?: { set(v: object): unknown } } } }).chrome?.storage?.local?.set({ 'proto-dialFolder': prefs.dialFolder });
+  putNormal(KEY, localStorage.getItem(KEY));
+  // The right-click "Add to Openmarks" (background) adds to the same folder the dial shows.
+  (globalThis as { chrome?: { storage?: { local?: { set(v: object): unknown } } } }).chrome?.storage?.local?.set({ 'proto-dialFolder': prefs.dialFolder, 'proto-focusPage': prefs.focusPage });
 }
 
-// Keep the background's copy of the dial folder current from the start.
-(globalThis as { chrome?: { storage?: { local?: { set(v: object): unknown } } } }).chrome?.storage?.local?.set({ 'proto-dialFolder': prefs.dialFolder });
+// Keep the background's copy of the dial folder (and the new-tab focus setting) current from the start.
+(globalThis as { chrome?: { storage?: { local?: { set(v: object): unknown } } } }).chrome?.storage?.local?.set({ 'proto-dialFolder': prefs.dialFolder, 'proto-focusPage': prefs.focusPage });

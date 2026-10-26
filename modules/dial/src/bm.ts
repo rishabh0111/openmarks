@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Direct browser calls for menus, adding, sorting, permissions and search.
+// Direct browser calls for menus, adding, sorting and permissions.
 import type { DialFolder, DialItem } from '@openmarks/module-sdk';
 
 export type Node = { id: string; parentId?: string; index?: number; title: string; url?: string; type?: string; children?: Node[] };
@@ -23,7 +23,6 @@ type Api = {
     remove(p: { origins: string[] }): Promise<boolean>;
     onAdded: Ev; onRemoved: Ev;
   };
-  search?: { query?(q: { text: string; disposition?: string }): Promise<void>; search?(q: { query: string }): Promise<void> };
   runtime: { getURL(p: string): string };
 };
 
@@ -81,12 +80,6 @@ export async function isGenericFavicon(b: Blob, size = 32): Promise<boolean> {
   const { fingerprint } = await import('./preview');
   if (!globes.has(size)) globes.set(size, fetch(browserFavicon('https://openmarks.invalid/', size)!).then((r) => r.blob()).then(fingerprint));
   return (await fingerprint(b)) === (await globes.get(size));
-}
-
-/** Search the web with the browser's default engine (`search` permission). */
-export async function webSearch(text: string) {
-  if (api.search?.query) return api.search.query({ text, disposition: 'CURRENT_TAB' });
-  if (api.search?.search) return api.search.search({ query: text });
 }
 
 /** Compare URLs ignoring scheme, `www.`, trailing slash and fragment, for the duplicate warning. */

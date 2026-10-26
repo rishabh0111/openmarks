@@ -5,9 +5,9 @@
   let { vim, onclose }: { vim: boolean; onclose: () => void } = $props();
   const groups = $derived([
     ['Keyboard', [
-      [['/'], 'Search your dial'], [['←', '↑', '→', '↓'], 'Move between tiles'], [['Enter'], 'Open'],
+      [['/'], 'Search (or just start typing)'], [['←', '↑', '→', '↓'], 'Move between tiles'], [['Enter'], 'Open'],
       [['[', ']'], 'Previous / next folder'],
-      [['Esc'], 'Back out of a folder'], [['Alt', '←', '→'], 'Move the tile'], [['Ctrl', 'V'], 'Paste a link to add it'], [['?'], 'This sheet'],
+      [['Esc'], 'Back out of a folder'], [['Alt', '←', '→'], 'Move the tile'], [['Shift', 'click'], 'Select tiles (again for a range)'], [['Ctrl', 'V'], 'Paste a link to add it'], [['?'], 'This sheet'],
     ]],
     ...(vim ? [['Vim keys', [
       [['h', 'j', 'k', 'l'], 'Move between tiles'], [['g g'], 'First tile'], [['G'], 'Last tile'],
