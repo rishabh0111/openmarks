@@ -15,12 +15,14 @@ No account, no ads, no tracking.
 ## Features
 
 - Tiles built from an ordinary bookmarks folder, with subfolders as tabs
-- Site pictures for tiles, themes, and light and dark modes
+- Site pictures for tiles, themes, and light and dark modes, or your own theme from a CSS file
 - A daily wallpaper from Bing, Wikimedia or Unsplash, or your own picture or colour
-- Search, plus paste a link anywhere to add a tile
+- Search your tiles and the web as you type, with suggestions from the engine you pick
+- Paste a link anywhere, or right-click a page, to add a tile to any folder
+- Select several tiles to move, open or delete them together
 - Keyboard shortcuts (arrow keys or Vim keys) and game controller support
 - Fits every screen, from phones and tablets to ultrawide monitors, with pictures kept sharp on HiDPI displays
-- Fast and minimal: about 70 KB, opens instantly from a local cache, no ads, no tracking, no account
+- Fast and minimal: under 100 KB, opens instantly from a local cache, no ads, no tracking, no account
 
 ## Build and development
 
