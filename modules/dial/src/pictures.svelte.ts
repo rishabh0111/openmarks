@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Per-tile picture choice made in the Edit dialog, kept in localStorage.
+import { putNormal } from './private';
 
 export type Picture = {
   /** auto = follow the Pictures setting; image = a cover the page offers; icon = one of its logos; shot = a screenshot
@@ -30,6 +31,7 @@ export function setPicture(id: string, p: Picture) {
   pictures[id] = p;
   try {
     localStorage.setItem(KEY + id, JSON.stringify(p));
+    putNormal(KEY + id, JSON.stringify(p));
   } catch {
     /* storage full: keep for this session */
   }

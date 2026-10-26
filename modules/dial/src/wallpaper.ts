@@ -6,6 +6,7 @@
 //               wallpaper material (portrait, small, SVG/GIF diagrams) step back to the latest one that is
 //   picsum: Unsplash photos from the Openmarks daily feed (a short list per day, so "new picture" steps through it)
 import type { Provider } from './prefs.svelte';
+import { isPrivate, normalEntries, putNormal } from './private';
 
 const DB = 'proto-openmarks';
 const STORE = 'files';
@@ -20,7 +21,11 @@ function db(): Promise<IDBDatabase> {
 }
 
 export async function saveWallpaper(file: Blob): Promise<string> {
-  await navigator.storage?.persist?.();
+  putNormal('wallpaper', file, DB, STORE);
+  if (isPrivate) return URL.createObjectURL(file);
+  // Asked for, not waited on: Firefox answers only once you respond to its "persistent storage" prompt, and the
+  // picture must be saved and shown whatever you choose there.
+  void navigator.storage?.persist?.().catch(() => {});
   const d = await db();
   await new Promise<void>((ok, fail) => {
     const t = d.transaction(STORE, 'readwrite');
@@ -32,6 +37,10 @@ export async function saveWallpaper(file: Blob): Promise<string> {
 }
 
 export async function loadWallpaper(): Promise<string | null> {
+  if (isPrivate) {
+    const blob = (await normalEntries(DB, STORE, 'wallpaper'))[0]?.[1];
+    return blob instanceof Blob ? URL.createObjectURL(blob) : null;
+  }
   const d = await db();
   const blob = await new Promise<Blob | undefined>((ok) => {
     const r = d.transaction(STORE).objectStore(STORE).get('wallpaper');
@@ -130,7 +139,7 @@ export const readSnap = (): Snap | null => {
     return null;
   }
 };
-/** A screen-sized JPEG copy of a wallpaper, remembered for instant new tabs. */
+/** A screen-sized JPEG copy of a wallpaper, for instant new tabs (remembered with keepSnap once it's still wanted). */
 export async function makeSnap(src: string, from: string): Promise<Snap | null> {
   try {
     const bmp = await createImageBitmap(await (await fetch(from)).blob());
@@ -142,13 +151,19 @@ export async function makeSnap(src: string, from: string): Promise<Snap | null> 
     x.drawImage(bmp, 0, 0, W, H);
     const blob = await c.convertToBlob({ type: 'image/jpeg', quality: 0.82 });
     const data = await new Promise<string>((ok) => { const r = new FileReader(); r.onload = () => ok(String(r.result)); r.readAsDataURL(blob); });
-    const snap = { src, data };
-    localStorage.setItem(SNAP, JSON.stringify(snap));
-    return snap;
+    return { src, data };
   } catch {
     return null;
   }
 }
+export function keepSnap(s: Snap) {
+  try {
+    localStorage.setItem(SNAP, JSON.stringify(s));
+  } catch {
+    /* full: new tabs draw the wallpaper once it loads */
+  }
+}
+
 export const dropSnap = () => localStorage.removeItem(SNAP);
 /** Today's cached daily picture, synchronously (null when it still has to be fetched). */
 export function peekDaily(p: Provider): Daily | null {

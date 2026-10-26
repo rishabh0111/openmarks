@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-import { mountModules } from '@openmarks/core';
-import { dial } from '@openmarks/module-dial';
-import { apiFor } from './api';
+import { seedPrivate } from '../../../../modules/dial/src/private';
 
-mountModules(document.body, [dial], apiFor);
+// In a private window the saved settings are copied in first: the dial reads them as soon as it loads.
+void seedPrivate().then(async () => {
+  const [{ mountModules }, { dial }, { apiFor }] = await Promise.all([import('@openmarks/core'), import('@openmarks/module-dial'), import('./api')]);
+  mountModules(document.body, [dial], apiFor);
+});

@@ -4,6 +4,7 @@
 // Generated content images (map snapshots and the like) are rejected: tiles show brands, not live content.
 import { perm } from './bm';
 import { analyse, upscale, iconTarget, density, type IconInfo } from './iconlab';
+import { isPrivate, normalEntries, putNormal } from './private';
 
 export type { Tone, IconInfo } from './iconlab';
 export type PreviewIcon = { src: string; px: number; info?: IconInfo };
@@ -21,7 +22,7 @@ const DB = 'openmarks-proto-previews', STORE = 'p', VERSION = 14;
 const mem = new Map<string, Preview>();
 // Cached pictures are sized for the screen they were made on; a sharper screen (moved to a HiDPI monitor) rebuilds them.
 const DPR_KEY = 'proto-preview-density';
-if (Number(localStorage.getItem(DPR_KEY) ?? 0) < density()) { indexedDB.deleteDatabase(DB); localStorage.setItem(DPR_KEY, String(density())); }
+if (!isPrivate && Number(localStorage.getItem(DPR_KEY) ?? 0) < density()) { indexedDB.deleteDatabase(DB); localStorage.setItem(DPR_KEY, String(density())); }
 let db: Promise<IDBDatabase> | null = null;
 function open(): Promise<IDBDatabase> {
   db ??= new Promise((ok, fail) => {
@@ -44,6 +45,10 @@ function tx<T>(mode: IDBTransactionMode, f: (s: IDBObjectStore) => IDBRequest<T>
 }
 /** Resolves once every cached preview is in memory (a few ms); the page waits for it before drawing tiles. */
 export const cacheReady: Promise<void> = (async () => {
+  if (isPrivate) {
+    for (const [k, v] of await normalEntries(DB, STORE)) mem.set(String(k), v as Preview);
+    return;
+  }
   try {
     const d = await open();
     await new Promise<void>((ok) => {
@@ -65,6 +70,7 @@ export const peekPreview = (url: string): Preview | undefined => mem.get(url);
 /** Remember something about a URL that isn't the page's own preview (the browser favicon, reconstructed). */
 export function remember(key: string, v: Preview) {
   mem.set(key, v);
+  if (isPrivate) return putNormal(key, v, DB, STORE);
   void tx('readwrite', (s) => s.put(v, key)).catch(() => {});
 }
 const inflight = new Map<string, Promise<Preview>>();
