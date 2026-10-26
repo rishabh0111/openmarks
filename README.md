@@ -4,7 +4,7 @@
 
 Openmarks is available for **Firefox** and **Chrome**.
 
-- Firefox: [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/openmarks/) (coming soon)
+- Firefox: [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/openmarks/)
 - Chrome: [Chrome Web Store](https://chromewebstore.google.com/) (coming soon)
 - Website: [rishabh0111.github.io/openmarks](https://rishabh0111.github.io/openmarks/)
 
