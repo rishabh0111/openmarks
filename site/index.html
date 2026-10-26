@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Openmarks: a free, open-source speed dial for your new tab</title>
-<meta name="description" content="Openmarks turns your new tab into a speed dial built from your own bookmarks. Free and open source for Firefox and Chrome. No account, no ads, no tracking.">
+<title>Openmarks: your bookmarks as a new tab speed dial</title>
+<meta name="description" content="A free, open-source speed dial for Firefox, built from a bookmarks folder. Five tile sizes, themes, daily wallpapers and one search box. No account, no tracking.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
-<meta property="og:title" content="Openmarks: a free, open-source speed dial for your new tab">
-<meta property="og:description" content="Your bookmarks, front and center. Free and open source for Firefox and Chrome.">
-<meta property="og:image" content="https://rishabh0111.github.io/openmarks/shots/home.png">
+<meta property="og:title" content="Openmarks: your bookmarks as a new tab speed dial">
+<meta property="og:description" content="A free, open-source speed dial for Firefox, built from a bookmarks folder. No account, no tracking.">
+<meta property="og:image" content="https://rishabh0111.github.io/openmarks/shots/home.jpg">
 <script>
-  // Store links. Change a URL here, and set live: true once that listing is published
-  // (that removes the "Coming soon" label). The same URLs are in the buttons below as a no-script fallback.
+  // Store links. Set live: true once a listing is published: its button shows and the "coming soon" line goes.
+  // The Firefox URL is also in the markup below as a no-script fallback.
   const STORES = {
-    firefox: { url: 'https://addons.mozilla.org/firefox/addon/openmarks/', live: false },
+    firefox: { url: 'https://addons.mozilla.org/firefox/addon/openmarks/', live: true },
     chrome: { url: 'https://chromewebstore.google.com/', live: false },
   };
   const REPO = 'https://github.com/rishabh0111/openmarks';
@@ -26,14 +26,6 @@
   <symbol id="i-firefox" viewBox="0 0 24 24"><path d="M8.824 7.287c.008 0 .004 0 0 0zm-2.8-1.4c.006 0 .003 0 0 0zm16.754 2.161c-.505-1.215-1.53-2.528-2.333-2.943.654 1.283 1.033 2.57 1.177 3.53l.002.02c-1.314-3.278-3.544-4.6-5.366-7.477-.091-.147-.184-.292-.273-.446a3.545 3.545 0 01-.13-.24 2.118 2.118 0 01-.172-.46.03.03 0 00-.027-.03.038.038 0 00-.021 0l-.006.001a.037.037 0 00-.01.005L15.624 0c-2.585 1.515-3.657 4.168-3.932 5.856a6.197 6.197 0 00-2.305.587.297.297 0 00-.147.37c.057.162.24.24.396.17a5.622 5.622 0 012.008-.523l.067-.005a5.847 5.847 0 011.957.222l.095.03a5.816 5.816 0 01.616.228c.08.036.16.073.238.112l.107.055a5.835 5.835 0 01.368.211 5.953 5.953 0 012.034 2.104c-.62-.437-1.733-.868-2.803-.681 4.183 2.09 3.06 9.292-2.737 9.02a5.164 5.164 0 01-1.513-.292 4.42 4.42 0 01-.538-.232c-1.42-.735-2.593-2.121-2.74-3.806 0 0 .537-2 3.845-2 .357 0 1.38-.998 1.398-1.287-.005-.095-2.029-.9-2.817-1.677-.422-.416-.622-.616-.8-.767a3.47 3.47 0 00-.301-.227 5.388 5.388 0 01-.032-2.842c-1.195.544-2.124 1.403-2.8 2.163h-.006c-.46-.584-.428-2.51-.402-2.913-.006-.025-.343.176-.389.206-.406.29-.787.616-1.136.974-.397.403-.76.839-1.085 1.303a9.816 9.816 0 00-1.562 3.52c-.003.013-.11.487-.19 1.073-.013.09-.026.181-.037.272a7.8 7.8 0 00-.069.667l-.002.034-.023.387-.001.06C.386 18.795 5.593 24 12.016 24c5.752 0 10.527-4.176 11.463-9.661.02-.149.035-.298.052-.448.232-1.994-.025-4.09-.753-5.844z"/></symbol>
   <symbol id="i-chrome" viewBox="0 0 24 24"><path d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A5.454 5.454 0 0 1 12 6.545h10.691A12 12 0 0 0 12 0zM1.931 5.47A11.943 11.943 0 0 0 0 12c0 6.012 4.42 10.991 10.189 11.864l3.953-6.847a5.45 5.45 0 0 1-6.865-2.29zm13.342 2.166a5.446 5.446 0 0 1 1.45 7.09l.002.001h-.002l-5.344 9.257c.206.01.413.016.621.016 6.627 0 12-5.373 12-12 0-1.54-.29-3.011-.818-4.364zM12 16.364a4.364 4.364 0 1 1 0-8.728 4.364 4.364 0 0 1 0 8.728Z"/></symbol>
   <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
-  <!-- Lucide icons (ISC license, lucide.dev) -->
-  <symbol id="i-ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></symbol>
-  <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></symbol>
-  <symbol id="i-user-x" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m17 8 5 5"/><path d="m22 8-5 5"/></symbol>
-  <symbol id="i-feather" viewBox="0 0 24 24"><path d="M12.67 19a2 2 0 0 0 1.416-.588l6.154-6.172a6 6 0 0 0-8.49-8.49L5.586 9.914A2 2 0 0 0 5 11.328V18a1 1 0 0 0 1 1z"/><path d="M16 8 2 22"/><path d="M17.5 15H9"/></symbol>
-  <symbol id="i-gamepad" viewBox="0 0 24 24"><path d="M6 11h4"/><path d="M8 9v4"/><path d="M15 12h.01"/><path d="M18 10h.01"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></symbol>
-  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></symbol>
-  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
 </svg>
 <header class="top wrap">
   <a class="brand" href="./"><img src="logo.svg" alt="" width="28" height="28">Openmarks</a>
@@ -42,135 +34,144 @@
 
 <main>
   <section class="hero wrap">
-    <h1>Your bookmarks, front and center.</h1>
-    <p class="lede">A free, open-source new tab for Firefox and Chrome.</p>
-    <div class="ctas">
-      <a class="store" data-store="firefox" href="https://addons.mozilla.org/firefox/addon/openmarks/"><svg class="store-logo ff" aria-hidden="true"><use href="#i-firefox"/></svg><span class="store-text"><small>Get it for</small><strong>Firefox</strong></span><span class="soon">Coming soon</span></a>
-      <a class="store" data-store="chrome" href="https://chromewebstore.google.com/"><svg class="store-logo cr" aria-hidden="true"><use href="#i-chrome"/></svg><span class="store-text"><small>Available in the</small><strong>Chrome Web Store</strong></span><span class="soon">Coming soon</span></a>
-      <a class="store" data-repo href="https://github.com/rishabh0111/openmarks"><svg class="store-logo gh-logo" aria-hidden="true"><use href="#i-github"/></svg><span class="store-text"><small>View source on</small><strong>GitHub</strong></span></a>
+    <h1>Your bookmarks, on every new tab.</h1>
+    <p class="lede">Openmarks turns a bookmarks folder into a speed dial: big tiles, with subfolders as tabs. Free and open source.</p>
+    <div class="cta">
+      <a class="store" data-store="firefox" href="https://addons.mozilla.org/firefox/addon/openmarks/"><svg class="store-logo" aria-hidden="true"><use href="#i-firefox"/></svg>Add to Firefox</a>
+      <a class="store" data-store="chrome" href="https://chromewebstore.google.com/" hidden><svg class="store-logo" aria-hidden="true"><use href="#i-chrome"/></svg>Add to Chrome</a>
+      <p class="alt"><span class="soon">Chrome version coming soon · </span><a data-repo href="https://github.com/rishabh0111/openmarks">Source on GitHub</a></p>
     </div>
-    <picture class="shot hero-shot">
-      <source srcset="shots/theme-dark.webp" media="(prefers-color-scheme: dark)" width="1600" height="756">
-      <img src="shots/hero.webp" width="2160" height="1020" fetchpriority="high"
-        alt="Openmarks new tab page: a grid of website tiles under folder tabs named Home, Work, Reading and Watch, with a clock and a search button.">
+    <picture class="hero-shot">
+      <source srcset="shots/hero-phone.webp" media="(max-width: 560px)" width="780" height="1156">
+      <img src="shots/hero.webp" width="2160" height="996" fetchpriority="high"
+        alt="The Openmarks new tab over a sunset photo: folder tabs Home, Work, Reading and Watch, a search bar, a clock, and twelve site tiles such as YouTube, Wikipedia and GitHub.">
     </picture>
   </section>
 
-  <section class="block wrap" aria-labelledby="h-themes">
-    <h2 id="h-themes">Pick a look</h2>
-    <div class="themes">
-      <div class="switch" role="radiogroup" aria-label="Theme">
-        <label><input type="radio" name="theme" value="vapor" checked>Vapor</label>
-        <label><input type="radio" name="theme" value="cyberpunk">Cyberpunk</label>
-        <label><input type="radio" name="theme" value="retro">Retro</label>
-        <label><input type="radio" name="theme" value="light">Light</label>
-        <label><input type="radio" name="theme" value="dark">Dark</label>
-      </div>
-      <div class="stage shot">
-        <img data-theme="light" src="shots/theme-light.webp" width="1600" height="756" loading="lazy" alt="The Openmarks theme in light mode: white tiles on a pale grey page.">
-        <img data-theme="dark" src="shots/theme-dark.webp" width="1600" height="756" loading="lazy" alt="The Openmarks theme in dark mode: the same tiles on a near-black page.">
-        <img data-theme="vapor" src="shots/theme-vapor.webp" width="1600" height="756" loading="lazy" alt="The Vapor theme: navy background with square-cornered tiles.">
-        <img data-theme="cyberpunk" src="shots/theme-cyberpunk.webp" width="1600" height="756" loading="lazy" alt="The Cyberpunk theme: dark grid background, neon edges and monospace titles.">
-        <img data-theme="retro" src="shots/theme-retro.webp" width="1600" height="756" loading="lazy" alt="The Retro theme: bevelled grey tiles over a blue sky and green hill.">
-      </div>
+  <section class="row wrap" aria-labelledby="h-folder">
+    <div class="text">
+      <h2 id="h-folder">Your dial is a bookmarks folder</h2>
+      <p>Pick any bookmarks folder. Its sites become tiles and its subfolders become tabs. Nothing new to sync: it goes wherever your bookmarks already do.</p>
+    </div>
+    <div class="folder">
+      <img class="pic" src="shots/bookmarks.webp" width="1400" height="440" loading="lazy" alt="The browser's bookmark manager: an Openmarks folder holding the subfolders Work, Reading and Watch, and sites such as YouTube, Wikipedia and GitHub.">
+      <svg class="down" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      <img class="tabs" src="shots/tabs.webp" width="684" height="96" loading="lazy" alt="In Openmarks, the same folder as tabs: Home, Work, Reading, Watch.">
     </div>
   </section>
 
-  <section class="block wrap" aria-labelledby="h-wall">
+  <section class="wide wrap" aria-labelledby="h-sizes">
+    <h2 id="h-sizes">From app icons to huge tiles</h2>
+    <p>Five sizes, shown here at their real scale. Leave the columns on Auto, or pick any number from 2 to 10.</p>
+    <div class="ladder">
+      <figure style="flex: 120 1 120px"><picture><source srcset="shots/size-icon-dark.webp" media="(prefers-color-scheme: dark)" width="240" height="216"><img src="shots/size-icon.webp" width="240" height="216" loading="lazy" alt="The GitHub tile at Icon size."></picture><figcaption>Icon</figcaption></figure>
+      <figure style="flex: 191 1 191px"><picture><source srcset="shots/size-s-dark.webp" media="(prefers-color-scheme: dark)" width="382" height="326"><img src="shots/size-s.webp" width="382" height="326" loading="lazy" alt="The GitHub tile at Small size."></picture><figcaption>Small</figcaption></figure>
+      <figure style="flex: 230 1 230px"><picture><source srcset="shots/size-m-dark.webp" media="(prefers-color-scheme: dark)" width="460" height="374"><img src="shots/size-m.webp" width="460" height="374" loading="lazy" alt="The GitHub tile at Medium size."></picture><figcaption>Medium</figcaption></figure>
+      <figure style="flex: 289 1 289px"><picture><source srcset="shots/size-l-dark.webp" media="(prefers-color-scheme: dark)" width="578" height="448"><img src="shots/size-l.webp" width="578" height="448" loading="lazy" alt="The GitHub tile at Large size."></picture><figcaption>Large</figcaption></figure>
+      <figure style="flex: 386 1 386px"><picture><source srcset="shots/size-xl-dark.webp" media="(prefers-color-scheme: dark)" width="772" height="570"><img src="shots/size-xl.webp" width="772" height="570" loading="lazy" alt="The GitHub tile at Huge size."></picture><figcaption>Huge</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="row wrap" aria-labelledby="h-tile">
+    <div class="text">
+      <h2 id="h-tile">Each tile, your way</h2>
+      <p>Show the site's cover image, its logo, a screenshot, or a picture of your own. Set it for every tile, or change one.</p>
+      <p>Titles under each tile, only when you point at it, or not at all.</p>
+    </div>
+    <div class="matrix">
+      <figure><picture><source srcset="shots/pic-cover-dark.webp" media="(prefers-color-scheme: dark)" width="460" height="374"><img src="shots/pic-cover.webp" width="460" height="374" loading="lazy" alt="The GitHub tile showing the site’s cover image."></picture><figcaption>Cover</figcaption></figure>
+      <figure><picture><source srcset="shots/pic-logo-dark.webp" media="(prefers-color-scheme: dark)" width="460" height="374"><img src="shots/pic-logo.webp" width="460" height="374" loading="lazy" alt="The GitHub tile showing a sharp GitHub logo."></picture><figcaption>Logo</figcaption></figure>
+      <figure><picture><source srcset="shots/pic-shot-dark.webp" media="(prefers-color-scheme: dark)" width="460" height="374"><img src="shots/pic-shot.webp" width="460" height="374" loading="lazy" alt="The GitHub tile showing a screenshot of the GitHub home page."></picture><figcaption>Screenshot</figcaption></figure>
+      <figure><picture><source srcset="shots/title-show-dark.webp" media="(prefers-color-scheme: dark)" width="460" height="374"><img src="shots/title-show.webp" width="460" height="374" loading="lazy" alt="The GitHub tile with its name under the picture."></picture><figcaption>Title shown</figcaption></figure>
+      <figure><picture><source srcset="shots/title-hover-dark.webp" media="(prefers-color-scheme: dark)" width="460" height="300"><img src="shots/title-hover.webp" width="460" height="300" loading="lazy" alt="The GitHub tile lifted under the pointer, its name showing."></picture><figcaption>Title on hover</figcaption></figure>
+      <figure><picture><source srcset="shots/title-hide-dark.webp" media="(prefers-color-scheme: dark)" width="460" height="300"><img src="shots/title-hide.webp" width="460" height="300" loading="lazy" alt="The GitHub tile with no name, only its picture."></picture><figcaption>No title</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="wide wrap" aria-labelledby="h-themes">
+    <h2 id="h-themes">Five looks, or write your own</h2>
+    <p>Export any theme as a CSS file, change what you like, and load it back.</p>
+    <figure class="slices" style="--n: 5">
+      <picture>
+        <source srcset="shots/themes-phone.webp" media="(max-width: 560px)" width="780" height="1600">
+        <img src="shots/themes.webp" width="2880" height="904" loading="lazy" alt="The same dial cut into five strips, one per theme: Openmarks light, Openmarks dark, Vapor with navy tiles, Cyberpunk with neon edges and monospace titles, and Retro with bevelled tiles over a blue sky and green hill.">
+      </picture>
+      <figcaption><span>Light</span><span>Dark</span><span>Vapor</span><span>Cyberpunk</span><span>Retro</span></figcaption>
+    </figure>
+  </section>
+
+  <section class="wide wrap" aria-labelledby="h-wall">
     <h2 id="h-wall">Any wallpaper</h2>
-    <div class="mosaic">
-      <figure class="shot"><img src="shots/wp-bing.webp" width="1100" height="519" loading="lazy" alt="Tiles over a Bing daily photo of a mountain landscape."><figcaption>Bing daily</figcaption></figure>
-      <figure class="shot"><img src="shots/wp-wikimedia.webp" width="1100" height="519" loading="lazy" alt="Tiles over a Wikimedia picture of the day showing purple berries."><figcaption>Wikimedia daily</figcaption></figure>
-      <figure class="shot"><img src="shots/wp-gradient.webp" width="1100" height="519" loading="lazy" alt="Tiles over a blue to orange gradient."><figcaption>Gradient</figcaption></figure>
-      <figure class="shot"><img src="shots/wp-color.webp" width="1100" height="519" loading="lazy" alt="Tiles over a plain green colour."><figcaption>Colour</figcaption></figure>
-    </div>
-    <p class="cap">Or your own photo, or a daily one from Unsplash.</p>
+    <p>A colour, a gradient, your own photo, or a new picture every day from Wikimedia, Unsplash or Bing.</p>
+    <figure class="slices" style="--n: 4">
+      <picture>
+        <source srcset="shots/walls-phone.webp" media="(max-width: 560px)" width="780" height="1280">
+        <img src="shots/walls.webp" width="2880" height="904" loading="lazy" alt="The same dial cut into four strips, one per wallpaper: a plain green colour, a blue to orange gradient, a Wikimedia photo of a mountain meadow, and an Unsplash sunset.">
+      </picture>
+      <figcaption><span>Colour</span><span>Gradient</span><span>Wikimedia daily</span><span>Unsplash daily</span></figcaption>
+    </figure>
   </section>
 
-  <section class="block wrap" aria-labelledby="h-pics">
-    <h2 id="h-pics">Choose each tile's picture</h2>
-    <div class="pics">
-      <figure><img src="shots/pic-cover.webp" width="432" height="344" loading="lazy" alt="The GitHub tile showing the site's cover image."><figcaption>Cover</figcaption></figure>
-      <figure><img src="shots/pic-logo.webp" width="432" height="344" loading="lazy" alt="The GitHub tile showing a sharp GitHub logo."><figcaption>Logo</figcaption></figure>
-      <figure><img src="shots/pic-shot.webp" width="432" height="344" loading="lazy" alt="The GitHub tile showing a screenshot of the GitHub home page."><figcaption>Screenshot</figcaption></figure>
+  <section class="row flip wrap" aria-labelledby="h-search">
+    <div class="text">
+      <h2 id="h-search">Type to find anything</h2>
+      <p>Press <kbd>/</kbd> or just start typing. Your tiles and bookmarks come first, then a web search with suggestions.</p>
+      <p>Google, DuckDuckGo, Startpage, Brave Search, or add your own engine.</p>
     </div>
+    <picture class="pic">
+      <source srcset="shots/search-dark.webp" media="(prefers-color-scheme: dark)" width="1416" height="1244">
+      <img src="shots/search.webp" width="1416" height="1244" loading="lazy" alt="The search box with “wiki” typed: the Wikipedia tile first, then Search Google for wiki, then suggestions such as wikipedia and wikihow.">
+    </picture>
   </section>
 
-  <section class="block wrap" aria-labelledby="h-use">
-    <h2 id="h-use" class="sr-only">Everyday use</h2>
-    <div class="cards">
-      <figure class="card wide">
-        <div class="tree" aria-hidden="true">
-          <span class="node"><svg><use href="#i-folder"/></svg>Openmarks</span>
-          <span class="node sub"><svg><use href="#i-folder"/></svg>Work</span>
-          <span class="node sub"><svg><use href="#i-folder"/></svg>Reading</span>
-          <span class="node sub"><svg><use href="#i-folder"/></svg>Watch</span>
-        </div>
-        <svg class="arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-        <img class="tabs" src="shots/tabs.webp" width="540" height="84" loading="lazy" alt="Folder tabs in Openmarks: Home, Work, Reading and Watch.">
-        <figcaption><strong>Built on your bookmarks</strong>Folders become tabs. Syncs wherever your bookmarks do.</figcaption>
-      </figure>
-      <figure class="card">
-        <img src="shots/search.webp" width="1600" height="400" loading="lazy" alt="Search open after pressing the slash key, showing tiles that match the letters r e and an option to search the web.">
-        <figcaption><strong>Press <kbd>/</kbd> to search</strong>Your tiles first, then the web.</figcaption>
-      </figure>
-      <figure class="card">
-        <img src="shots/edit.webp" width="1530" height="710" loading="lazy" alt="The edit dialog for the GitHub tile, with its address, name and a choice of Auto, Cover, Logo, Screenshot or your own image.">
-        <figcaption><strong>Edit in place</strong>Name, link and picture in one dialog.</figcaption>
-      </figure>
-      <figure class="card">
-        <img src="shots/menu.webp" width="1000" height="470" loading="lazy" alt="A tile's menu with Open in new tab, Edit, Refresh picture, Move to and Delete.">
-        <figcaption><strong>Drag, move, delete</strong>Every delete can be undone.</figcaption>
-      </figure>
-      <figure class="card add">
-        <div class="keys" aria-hidden="true"><kbd>Ctrl</kbd><span>+</span><kbd>V</kbd></div>
-        <figcaption><strong>Add a site in a second</strong>Paste a link, or right-click any page: "Add to Speed Dial".</figcaption>
-      </figure>
+  <section class="row wrap" aria-labelledby="h-add">
+    <div class="text">
+      <h2 id="h-add">Add a site from anywhere</h2>
+      <p>Paste a link onto the page with <kbd>Ctrl</kbd>+<kbd>V</kbd>. Right-click any website and choose Openmarks › Add to Home. Or add every open tab at once.</p>
     </div>
+    <img class="pic small bare" src="shots/pagemenu.webp" width="720" height="572" loading="lazy" alt="The page menu: Add site, Add open tabs, New folder, Open all (12), Select, Keyboard shortcuts, Settings.">
   </section>
 
-  <section class="block wrap" aria-labelledby="h-dev">
+  <section class="row flip wrap" aria-labelledby="h-select">
+    <div class="text">
+      <h2 id="h-select">Tidy up several at once</h2>
+      <p><kbd>Shift</kbd>+click tiles to select them, then move, open or delete them together, or drag them into a folder.</p>
+      <p>Every delete can be undone.</p>
+    </div>
+    <img class="pic" src="shots/select.webp" width="1720" height="980" loading="lazy" alt="Three tiles selected with check marks, and a bar at the bottom: 3 selected, Move to, Open, Delete, Done.">
+  </section>
+
+  <section class="row wrap" aria-labelledby="h-keys">
+    <div class="text">
+      <h2 id="h-keys">Hands on the keyboard</h2>
+      <p>Arrow keys to move, <kbd>Enter</kbd> to open, <kbd>[</kbd> and <kbd>]</kbd> to switch folders, <kbd>?</kbd> for the rest.</p>
+      <p>Yes, there are Vim keys: <kbd>h</kbd><kbd>j</kbd><kbd>k</kbd><kbd>l</kbd>, as the ancestors intended. A game controller works too.</p>
+    </div>
+    <img class="pic fit" src="shots/keys.webp" width="968" height="700" loading="lazy" alt="The Keyboard shortcuts sheet: / to search, arrows to move, Enter to open, [ and ] for folders, Esc to back out, Alt with arrows to move a tile, Shift-click to select, Ctrl+V to paste a link, ? for the sheet.">
+  </section>
+
+  <section class="wide wrap" aria-labelledby="h-dev">
     <h2 id="h-dev">Phone to ultrawide</h2>
+    <p>Up to 10 columns on a 49-inch ultrawide, two on a phone, and sharp on HiDPI screens.</p>
     <div class="devices">
-      <figure class="dev monitor"><div class="screen"><img src="shots/dev-ultrawide.webp" width="1800" height="753" loading="lazy" alt="Openmarks on a 3440 pixel wide ultrawide monitor, ten tiles per row over a daily landscape photo."></div><figcaption>Ultrawide</figcaption></figure>
-      <figure class="dev laptop"><div class="screen"><img src="shots/dev-laptop.webp" width="1000" height="625" loading="lazy" alt="Openmarks on a laptop screen, five tiles per row over a daily landscape photo."></div><figcaption>Laptop</figcaption></figure>
+      <figure class="dev monitor"><div class="screen"><img src="shots/dev-ultrawide.webp" width="1800" height="753" loading="lazy" alt="Openmarks on a 3440 pixel wide ultrawide monitor, ten tiles per row over a mountain meadow photo."></div><figcaption>Ultrawide</figcaption></figure>
+      <figure class="dev laptop"><div class="screen"><img src="shots/dev-laptop.webp" width="1000" height="625" loading="lazy" alt="Openmarks on a laptop screen, five tiles per row."></div><figcaption>Laptop</figcaption></figure>
       <figure class="dev tablet"><div class="screen"><img src="shots/dev-tablet.webp" width="520" height="748" loading="lazy" alt="Openmarks on a tablet in portrait, three tiles per row."></div><figcaption>Tablet</figcaption></figure>
       <figure class="dev phone"><div class="screen"><img src="shots/dev-phone.webp" width="400" height="866" loading="lazy" alt="Openmarks on a phone, two tiles per row."></div><figcaption>Phone</figcaption></figure>
     </div>
-    <p class="cap">Up to 10 columns, sharp on HiDPI. Your 49-inch ultrawide finally has something worth looking at.</p>
   </section>
 
-  <section class="block wrap" aria-labelledby="h-keys">
-    <h2 id="h-keys">Hands on the keyboard</h2>
-    <ul class="keymap">
-      <li><span class="keys"><kbd>/</kbd></span>Search</li>
-      <li><span class="keys"><kbd>h</kbd><kbd>j</kbd><kbd>k</kbd><kbd>l</kbd></span>Move</li>
-      <li><span class="keys"><kbd aria-label="Left">&larr;</kbd><kbd aria-label="Up">&uarr;</kbd><kbd aria-label="Down">&darr;</kbd><kbd aria-label="Right">&rarr;</kbd></span>Move</li>
-      <li><span class="keys"><kbd class="w">Enter</kbd></span>Open</li>
-      <li><span class="keys"><kbd class="w">Esc</kbd></span>Close</li>
-      <li><span class="keys"><kbd>?</kbd></span>All shortcuts</li>
-      <li><span class="keys"><svg class="pad" role="img" aria-label="Game controller"><use href="#i-gamepad"/></svg></span>Controller too</li>
-    </ul>
-    <p class="cap">Yes, there are Vim keys. <kbd>h</kbd><kbd>j</kbd><kbd>k</kbd><kbd>l</kbd>, as the ancestors intended. Everyone else, the arrow keys were never wrong.</p>
+  <section class="wide wrap statement" aria-labelledby="h-nobloat">
+    <h2 id="h-nobloat">No&nbsp;ads. No&nbsp;tracking. No&nbsp;account. About&nbsp;70&nbsp;KB.</h2>
+    <p>It works in private windows. The only requests it makes are for the wallpaper and tile pictures you turn on. <a href="privacy.html">Privacy policy</a></p>
   </section>
 
-  <section class="nobloat wrap" aria-labelledby="h-nobloat">
-    <h2 id="h-nobloat">No ads. No bloat. Just your sites.</h2>
-    <ul class="points">
-      <li><svg aria-hidden="true"><use href="#i-ban"/></svg>No ads</li>
-      <li><svg aria-hidden="true"><use href="#i-eye-off"/></svg>No tracking</li>
-      <li><svg aria-hidden="true"><use href="#i-user-x"/></svg>No account</li>
-      <li><svg aria-hidden="true"><use href="#i-feather"/></svg>~70 KB</li>
-    </ul>
-    <p class="cap">Nothing collected. The only requests are the wallpaper and tile pictures you turn on. <a href="privacy.html">Privacy policy</a></p>
-  </section>
-
-  <section class="closing wrap">
-    <h2>Make your new tab worth opening.</h2>
-    <div class="ctas">
-      <a class="store" data-store="firefox" href="https://addons.mozilla.org/firefox/addon/openmarks/"><svg class="store-logo ff" aria-hidden="true"><use href="#i-firefox"/></svg><span class="store-text"><small>Get it for</small><strong>Firefox</strong></span><span class="soon">Coming soon</span></a>
-      <a class="store" data-store="chrome" href="https://chromewebstore.google.com/"><svg class="store-logo cr" aria-hidden="true"><use href="#i-chrome"/></svg><span class="store-text"><small>Available in the</small><strong>Chrome Web Store</strong></span><span class="soon">Coming soon</span></a>
-      <a class="store" data-repo href="https://github.com/rishabh0111/openmarks"><svg class="store-logo gh-logo" aria-hidden="true"><use href="#i-github"/></svg><span class="store-text"><small>View source on</small><strong>GitHub</strong></span></a>
+  <section class="hero closing wrap" aria-labelledby="h-close">
+    <h2 id="h-close">Make your new tab worth opening.</h2>
+    <div class="cta">
+      <a class="store" data-store="firefox" href="https://addons.mozilla.org/firefox/addon/openmarks/"><svg class="store-logo" aria-hidden="true"><use href="#i-firefox"/></svg>Add to Firefox</a>
+      <a class="store" data-store="chrome" href="https://chromewebstore.google.com/" hidden><svg class="store-logo" aria-hidden="true"><use href="#i-chrome"/></svg>Add to Chrome</a>
+      <p class="alt"><span class="soon">Chrome version coming soon · </span><a data-repo href="https://github.com/rishabh0111/openmarks">Source on GitHub</a></p>
     </div>
   </section>
 </main>
@@ -182,12 +183,13 @@
 </footer>
 
 <script>
+  // A store's button shows once its listing is live; the line under it then drops "coming soon".
   for (const a of document.querySelectorAll('[data-store]')) {
     const s = STORES[a.dataset.store];
     a.href = s.url;
-    if (s.live) a.querySelector('.soon')?.remove();
-    else a.classList.add('is-soon');
+    a.hidden = !s.live;
   }
+  if (STORES.chrome.live) for (const el of document.querySelectorAll('.soon')) el.remove();
   for (const a of document.querySelectorAll('[data-repo]')) a.href = REPO;
 </script>
 </body>
